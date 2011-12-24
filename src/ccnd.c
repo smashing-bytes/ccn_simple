@@ -48,6 +48,7 @@ static int handle_incoming_interest(interest *msg);
 static int handle_incoming_content(content *msg);
 
 
+
 /*Entry point*/
 int main(int argc, char **argv)
 {
@@ -110,7 +111,7 @@ void *message_receiver(void *ptr)
            	 	exit(1);
         	}
 
-		//recv here
+		//TODO: recv() message and act accordingly
 
 	}
 	
