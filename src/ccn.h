@@ -16,14 +16,12 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #include "interest.h"
 #include "content.h"
-
 #define PACKET_SIZE 20000 //bytes
 
 
-typedef struct interest interest;
-typedef struct content content;
 enum packet_type
 {
 	_CONNECT,     /*connect*/
@@ -41,7 +39,7 @@ struct ccn_packet
 /*Function declarations*/
 unsigned char *serialize_packet(struct ccn_packet *packet, int type);
 static void ccn_connect();
-static int express_interest(interest *_int);
-static int send_content(content *_con);
+static int express_interest(struct interest *_int);
+static int send_content(struct content *_con);
 
 

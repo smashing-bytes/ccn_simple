@@ -17,7 +17,8 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
+#ifndef _INTEREST_H
+#define _INTEREST_H
 struct interest
 {
 	unsigned char *name;
@@ -25,3 +26,5 @@ struct interest
 	unsigned short persistent;
 	unsigned char *nonce;
 };
+typedef struct interest interest;
+#endif

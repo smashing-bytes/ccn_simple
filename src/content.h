@@ -16,6 +16,8 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#ifndef _CONTENT_H
+#define _CONTENT_H
 
 struct content
 {
@@ -24,3 +26,5 @@ struct content
 	unsigned char *nonce;
 	unsigned char *data;
 };
+
+#endif

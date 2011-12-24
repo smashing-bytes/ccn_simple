@@ -37,12 +37,12 @@
 /*Domain socket path*/
 #define SOCK_PATH "/tmp/.tmpsock" 
 
-typedef struct interest interest;
+//typedef struct interest interest;
 typedef struct content content;
 typedef struct ccn_packet ccn_packet;
 
 /*fwd declarations*/
-static int ccn_connect();
+
 void *message_receiver(void *ptr); //in pthread
 static int handle_incoming_interest(interest *msg);
 static int handle_incoming_content(content *msg);
