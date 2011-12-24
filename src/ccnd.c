@@ -37,7 +37,7 @@
 /*Domain socket path*/
 #define SOCK_PATH "/tmp/.tmpsock" 
 
-//typedef struct interest interest;
+// typedef struct interest interest;
 typedef struct content content;
 typedef struct ccn_packet ccn_packet;
 
