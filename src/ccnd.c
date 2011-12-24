@@ -30,6 +30,7 @@
 
 
 #include "ccnd.h"
+#include "ccn.h"
 #include "content.h"
 #include "interest.h"
 
@@ -38,7 +39,7 @@
 
 typedef struct interest interest;
 typedef struct content content;
-
+typedef struct ccn_packet ccn_packet;
 
 /*fwd declarations*/
 static int ccn_connect();
@@ -71,6 +72,8 @@ void *message_receiver(void *ptr)
 {
 	int s, s2, t; 
 	size_t len;
+	ccn_packet *packet;
+	
 	struct sockaddr_un local, remote;
 	if((s = socket(AF_UNIX, SOCK_STREAM, 0)) == -1) 
 	{
@@ -95,6 +98,22 @@ void *message_receiver(void *ptr)
 		perror("Listen Error");
 		exit(1);
     	}
+
+
+	while(1)
+	{
+		t = sizeof(remote);
+		
+		if ((s2 = accept(s, (struct sockaddr *)&remote, &t)) == -1) 
+		{
+            		perror("accept");
+           	 	exit(1);
+        	}
+
+		//recv here
+
+	}
+	
 	return 0;
 }
 

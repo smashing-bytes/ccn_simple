@@ -24,7 +24,7 @@ int main()
 {
 		struct interest int_msg;
 		struct content;
-		int_msg.name = "mplampla";
+
 		printf("%s\n", int_msg.name);
 		return (0);
 }

@@ -22,4 +22,5 @@ struct content
 	unsigned char *name;
 	unsigned short ttl;
 	unsigned char *nonce;
+	unsigned char *data;
 };

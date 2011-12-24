@@ -18,7 +18,9 @@ ccn_simple_SOURCES = \
 	interest.h      \
 	ccnd.c      \
 	content.h      \
-	ccnd.h
+	ccnd.h      \
+	ccn.h      \
+	ccn_user.c
 
 ccn_simple_LDFLAGS = 
 
