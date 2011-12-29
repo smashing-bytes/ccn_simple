@@ -19,12 +19,11 @@
 #include <stdio.h>
 #include "interest.h"
 #include "content.h"
+#include "ccn.h"
 
 int main()
 {
-		struct interest int_msg;
-		struct content;
-
-		printf("%s\n", int_msg.name);
-		return (0);
+	ccn_connect();
+		
+	return (0);
 }
