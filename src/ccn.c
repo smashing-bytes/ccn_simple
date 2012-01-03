@@ -17,6 +17,12 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "ccn.h"
+#include <stdlib.h>
+/*Domain socket path*/
+#define SOCK_PATH "/tmp/.tmpsock" 
+
+
+#define GOT_HERE printf("[%d] Got here\n", __LINE__);
 
 void print_ip(int ip)
 {
@@ -62,7 +68,6 @@ int char_to_ip(char *ip, size_t addrlen)
 */
 int char_to_ip(const char *ip)
 {
-
 	return ntohl(inet_addr(ip));
 }
 
@@ -91,47 +96,57 @@ int getmyip()
 		}
 		
 	}
-	/*Convert to int*/
-	//for(i = 0; i < strlen(addressbuffer) + 1; i++)
-	//	printf("%c|", addressbuffer[i]);
-	//printf("%s\n", addressbuffer);
-	print_ip(char_to_ip(addressbuffer));
+
 	if (ifaddrstruct != NULL) 
 		freeifaddrs(ifaddrstruct);
 	return 0;
 
 }
-void ccn_connect()
+int ccn_connect()
 {
 
 	connect_packet *connect_pack;
-	ccn_packet *ccn_pack;
-
-	//connect_pack->ip = 0; //GET IP
-	//connect_packet->pid = 0; //TODO: get pid
-	getmyip();
-
+	ccn_packet *ccn_pack = malloc(sizeof(ccn_packet));
+	connect_pack = malloc (sizeof(connect_packet));
+	unsigned char *data;
+	connect_pack->ip = getmyip();
+	connect_pack->pid = getpid(); 
+	encapsulate_connect(connect_pack, ccn_pack);
+	GOT_HERE
+	return 0;
+	
 
 }
-unsigned char *serialize_packet(ccn_packet *packet, int type)
+
+
+int encapsulate_connect(connect_packet *packet, ccn_packet *pack)
+{
+	printf("encapsulate connect\n");
+	pack->len = sizeof(int) + sizeof(short);
+	printf("Packet length: %d \n", pack->len);
+	
+	return 0;
+}
+
+unsigned char *serialize_packet(void *packet, int type)
 {
 	unsigned char *pack;
 
 	switch(type)
 	{
-	case 0: /*connect*/
-	{
+		case 0: /*connect*/
+		{
 
 
-		break;
-	}
-	case 1: /*Interest*/
-	{
-		break;
-	}
-	case 2: /*Content*/
-	{
-		break;
-	}
+			break;
+		}
+		case 1: /*Interest*/
+		{
+			break;
+		}
+		case 2: /*Content*/
+		{
+			break;
+		}
 	}
 }
