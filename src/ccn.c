@@ -18,6 +18,9 @@
  */
 #include "ccn.h"
 #include <stdlib.h>
+#include <sys/types.h>
+#include <string.h>
+
 /*Domain socket path*/
 #define SOCK_PATH "/tmp/.tmpsock" 
 
@@ -105,14 +108,15 @@ int getmyip()
 int ccn_connect()
 {
 
-	connect_packet *connect_pack;
+	connect_packet *connect_pack = malloc (sizeof(connect_packet));;
 	ccn_packet *ccn_pack = malloc(sizeof(ccn_packet));
-	connect_pack = malloc (sizeof(connect_packet));
 	unsigned char *data;
 	connect_pack->ip = getmyip();
 	connect_pack->pid = getpid(); 
 	encapsulate_connect(connect_pack, ccn_pack);
-	GOT_HERE
+
+
+
 	return 0;
 	
 
@@ -123,7 +127,13 @@ int encapsulate_connect(connect_packet *packet, ccn_packet *pack)
 {
 	printf("encapsulate connect\n");
 	pack->len = sizeof(int) + sizeof(short);
+	pack->data = malloc(pack->len);
+	pack->pt = 0; //Packet type
 	printf("Packet length: %d \n", pack->len);
+	
+	memcpy(pack->data, &packet->pid, 2);
+	memcpy(pack->data, &packet->ip, 4);	
+	
 	
 	return 0;
 }
