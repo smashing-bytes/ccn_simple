@@ -25,6 +25,8 @@ struct content
 	unsigned short ttl;
 	unsigned char *nonce;
 	unsigned char *data;
+	unsigned short len;
 };
 
+typedef struct content content;
 #endif
