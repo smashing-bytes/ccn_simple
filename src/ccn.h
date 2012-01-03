@@ -1,3 +1,5 @@
+ #ifndef _CCN_H_
+ #define _CCN_H_
  /*
  * ccn.h
  * Main CCN definitions
@@ -32,6 +34,9 @@
 #include "content.h"
 #define PACKET_SIZE 20000 //bytes
 
+
+int ccn_connect();
+
 enum packet_type
 {
 	_CONNECT,     /*connect*/
@@ -47,13 +52,21 @@ struct connect_packet
 
 struct ccn_packet
 {
-	int pt;
+	int pt; //type
+	unsigned short len;
 	unsigned char *data; //Encapsulation
 	
 };
 
 
-
 /*typedefs*/
 typedef struct ccn_packet ccn_packet;
 typedef struct connect_packet connect_packet;
+
+/*Forward declarations*/
+
+int encapsulate_connect(connect_packet *packet, ccn_packet *pack);
+
+//TODO: add other encapsulations
+#endif
+
