@@ -16,17 +16,33 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include <stdio.h>
+#include <netinet/in.h>
+#include <netdb.h>
+#include <sys/socket.h>  
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netdb.h>    
+#include <ifaddrs.h>
+#include <string.h> 
+#include <arpa/inet.h>
+
 
 #include "interest.h"
 #include "content.h"
 #define PACKET_SIZE 20000 //bytes
-
 
 enum packet_type
 {
 	_CONNECT,     /*connect*/
 	_INTEREST,    /*Interest*/
 	_CONTENT      /*Content */
+};
+
+struct connect_packet
+{
+	unsigned short pid;
+	int ip;
 };
 
 struct ccn_packet
@@ -36,10 +52,8 @@ struct ccn_packet
 	
 };
 
-/*Function declarations*/
-unsigned char *serialize_packet(struct ccn_packet *packet, int type);
-static void ccn_connect();
-static int express_interest(struct interest *_int);
-static int send_content(struct content *_con);
 
 
+/*typedefs*/
+typedef struct ccn_packet ccn_packet;
+typedef struct connect_packet connect_packet;

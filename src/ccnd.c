@@ -39,7 +39,7 @@
 
 //typedef struct interest interest;
 typedef struct content content;
-typedef struct ccn_packet ccn_packet;
+//typedef struct ccn_packet ccn_packet;
 
 /*fwd declarations*/
 
