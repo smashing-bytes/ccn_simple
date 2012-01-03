@@ -138,7 +138,7 @@ int encapsulate_connect(connect_packet *packet, ccn_packet *pack)
 	return 0;
 }
 
-unsigned char *serialize_packet(void *packet, int type)
+unsigned char *serialize_packet(ccn_packet *packet, int type)
 {
 	unsigned char *pack;
 
@@ -160,3 +160,11 @@ unsigned char *serialize_packet(void *packet, int type)
 		}
 	}
 }
+
+/**
+ * Connect to ccn daemon and send a packet
+ */
+int send_packet(unsigned char *data)
+{
+	
+	

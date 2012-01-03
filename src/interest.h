@@ -25,6 +25,7 @@ struct interest
 	unsigned short ttl;
 	unsigned short persistent;
 	unsigned char *nonce;
+	unsigned short len;
 };
 typedef struct interest interest;
 #endif

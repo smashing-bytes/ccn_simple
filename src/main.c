@@ -17,13 +17,17 @@
  */
 
 #include <stdio.h>
+#include "ccn.h"
 #include "interest.h"
 #include "content.h"
-#include "ccn.h"
+
+
+#define GOT_HERE printf("[%d] Got here\n", __LINE__);
 
 int main()
 {
 	ccn_connect();
-		
-	return (0);
+
+	//printf("Connected\n");
+	return 0;
 }

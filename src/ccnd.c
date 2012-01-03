@@ -38,7 +38,7 @@
 #define SOCK_PATH "/tmp/.tmpsock" 
 
 //typedef struct interest interest;
-typedef struct content content;
+//typedef struct content content;
 //typedef struct ccn_packet ccn_packet;
 
 /*fwd declarations*/
@@ -58,13 +58,9 @@ int main(int argc, char **argv)
 
 	ret = pthread_create(&message_thread, NULL, message_receiver, (void*) t);
 
-
-	
 	pthread_join(message_thread, NULL);
 
-	return 0;
-
-	
+	return 0;	
 
 }
 
